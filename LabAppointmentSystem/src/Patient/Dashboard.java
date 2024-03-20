@@ -43,6 +43,13 @@ public class Dashboard {
 			}
 		}
 
+
+		//No data added
+		WebElement submit1 = chromeDriver.findElement(By.xpath("//button[normalize-space()='Submit']"));
+		submit1.click();
+		Thread.sleep(5000);
+
+		//Added valid data
 		WebElement patientName = chromeDriver.findElement(By.xpath("//input[@id='full_name']"));
 		patientName.sendKeys("Test Data");
 		Thread.sleep(5000);
@@ -53,6 +60,23 @@ public class Dashboard {
 
 		WebElement date = chromeDriver.findElement(By.xpath("(//input[@id='date'])[1]"));
 		date.sendKeys("03/20/2024");
+		Thread.sleep(5000);
+
+		WebElement doctor_name = chromeDriver.findElement(By.xpath("(//input[@id='doctor'])[1]"));
+		doctor_name.sendKeys("Dr. Test");
+		Thread.sleep(5000);
+
+		WebElement submit = chromeDriver.findElement(By.xpath("//button[normalize-space()='Submit']"));
+		submit.click();
+		Thread.sleep(5000);
+
+		//click cancel button
+		WebElement cancel = chromeDriver.findElement(By.xpath("//button[normalize-space()='Cancel']"));
+		cancel.click();
+		Thread.sleep(5000);
+
+		WebElement appointmentPage = chromeDriver.findElement(By.xpath("(//a[contains(text(),'Request')])[1]"));
+		appointmentPage.click();
 		Thread.sleep(5000);
 
 
