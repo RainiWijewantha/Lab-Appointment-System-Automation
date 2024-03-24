@@ -1,10 +1,14 @@
 package technician;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TechnicianLogin {
 
@@ -28,15 +32,79 @@ public class TechnicianLogin {
 		chromeDriver.get(baseURL);
 		Thread.sleep(5000);
 		
+		WebDriverWait wait = new WebDriverWait(chromeDriver, Duration.ofSeconds(2000)); 
+
 		WebElement userName = chromeDriver.findElement(By.xpath("//input[@id='username']"));
+
+		WebElement password = chromeDriver.findElement(By.xpath("//input[@id='password']"));
+
+		WebElement login = chromeDriver.findElement(By.xpath("//button[normalize-space()='Login Now']"));
+
+		//No data
+		login.click();
+		Thread.sleep(5000);
+
+		// Wait for the page to refresh or navigate
+		// Then, re-locate the elements
+		userName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='username']")));
+		password = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='password']")));
+		login = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[normalize-space()='Login Now']")));
+
+		//correct username and wrong password
 		userName.sendKeys("TechAdmin");
 		Thread.sleep(5000);
-		
-		WebElement password = chromeDriver.findElement(By.xpath("//input[@id='password']"));
+
+		password.sendKeys("Techadmin@ABC@123");
+		Thread.sleep(5000);
+
+		login.click();
+		Thread.sleep(5000);
+
+		// Wait for the page to refresh or navigate
+		// Then, re-locate the elements
+		userName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='username']")));
+		password = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='password']")));
+		login = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[normalize-space()='Login Now']")));
+
+		//wrong username and correct password
+		userName.sendKeys("TechAdministrator");
+		Thread.sleep(5000);
+
 		password.sendKeys("Tech_admin@ABC@123");
 		Thread.sleep(5000);
-		
-		WebElement login = chromeDriver.findElement(By.xpath("//button[normalize-space()='Login Now']"));
+
+		login.click();
+		Thread.sleep(5000);
+
+		// Wait for the page to refresh or navigate
+		// Then, re-locate the elements
+		userName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='username']")));
+		password = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='password']")));
+		login = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[normalize-space()='Login Now']")));
+
+		//wrong username and password
+		userName.sendKeys("TechAdministrator");
+		Thread.sleep(5000);
+
+		password.sendKeys("Techadmin@ABC@123");
+		Thread.sleep(5000);
+
+		login.click();
+		Thread.sleep(5000);
+
+		// Wait for the page to refresh or navigate
+		// Then, re-locate the elements
+		userName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='username']")));
+		password = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='password']")));
+		login = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[normalize-space()='Login Now']")));
+
+		//correct credentials
+		userName.sendKeys("TechAdmin");
+		Thread.sleep(5000);
+
+		password.sendKeys("Tech_admin@ABC@123");
+		Thread.sleep(5000);
+
 		login.click();
 	}
 

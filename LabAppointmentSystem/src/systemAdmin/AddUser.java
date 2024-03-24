@@ -51,6 +51,13 @@ public class AddUser {
 			}
 		}
 
+		//no data
+		WebElement regiter = chromeDriver.findElement(By.xpath("//button[normalize-space()='Register Now']"));
+		regiter.click();
+		Thread.sleep(5000);
+
+		regiter = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[normalize-space()='Register Now']")));
+
 		//incorrect email address format
 		WebElement fullName = chromeDriver.findElement(By.xpath("//input[@id='full_name']"));
 		fullName.sendKeys("Testing");
@@ -68,7 +75,6 @@ public class AddUser {
 		phoneNumber.sendKeys("0745698123");
 		Thread.sleep(5000);
 
-		WebElement regiter = chromeDriver.findElement(By.xpath("//button[normalize-space()='Register Now']"));
 		regiter.click();
 		Thread.sleep(5000);
 
@@ -115,14 +121,14 @@ public class AddUser {
 		email.clear();
 		address.clear();
 		phoneNumber.clear();
-		
+
 		//correct details
 		fullName.sendKeys("Testing");
 		Thread.sleep(5000);
-		
+
 		email.sendKeys("testing@gmail.com");
 		Thread.sleep(5000);
-		
+
 		address.sendKeys("Test");
 		Thread.sleep(5000);
 

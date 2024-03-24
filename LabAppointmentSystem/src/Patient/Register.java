@@ -33,6 +33,15 @@ public class Register {
 		registerLink.click();
 		Thread.sleep(5000);
 
+		//No data
+		WebElement registerButton = chromeDriver.findElement(By.xpath("//button[normalize-space()='Register Now']"));
+		registerButton.click();
+		Thread.sleep(5000);
+
+		// Wait for the page to refresh or navigate
+		// Then, re-locate the elements
+		registerButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[normalize-space()='Register Now']")));
+
 		//incorrect email format
 		WebElement fullName = chromeDriver.findElement(By.xpath("//input[@id='full_name']"));
 		fullName.sendKeys("Test1");
@@ -59,7 +68,6 @@ public class Register {
 		Thread.sleep(5000);
 
 		// Click on "Register Now" button
-		WebElement registerButton = chromeDriver.findElement(By.xpath("//button[normalize-space()='Register Now']"));
 		registerButton.click();
 
 		// Wait for the page to refresh or navigate

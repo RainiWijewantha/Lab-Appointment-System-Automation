@@ -27,6 +27,13 @@ public class Payment {
 		Thread.sleep(5000);
 
 		WebDriverWait wait = new WebDriverWait(chromeDriver, Duration.ofSeconds(2000)); 
+		
+		//No data
+		WebElement pay = chromeDriver.findElement(By.xpath("//button[normalize-space()='Pay']"));
+		pay.click();
+		Thread.sleep(5000);
+		
+		pay = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[normalize-space()='Pay']")));
 
 		//invalid length of card number & invalid length of vcc
 		WebElement card_number = chromeDriver.findElement(By.xpath("//input[@id='number']"));
@@ -49,7 +56,6 @@ public class Payment {
 		email.sendKeys("sashee.wijewantha@gmail.com");
 		Thread.sleep(5000);
 
-		WebElement pay = chromeDriver.findElement(By.xpath("//button[normalize-space()='Pay']"));
 		pay.click();
 		Thread.sleep(5000);
 
